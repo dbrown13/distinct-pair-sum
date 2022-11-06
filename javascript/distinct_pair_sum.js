@@ -1,5 +1,16 @@
 function distinctPairSum(arr, k) {
   // type your code here
+  const pairs = {};
+
+  arr.slice(0, -1).forEach((num, index) => {
+    const nextValue = arr[index + 1];
+
+    if (num + nextValue === k && pairs[num] === undefined && pairs[nextValue] === undefined) {
+      pairs[num] = [num, nextValue];
+    }
+  });
+
+  return Object.values(pairs);
 }
 
 if (require.main === module) {
